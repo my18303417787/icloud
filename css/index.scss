@@ -1,0 +1,502 @@
+@import "base";
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: '微软雅黑';
+}
+$colorlist:(
+        'green':#6DDC31,
+        'yellow':#F3CB00,
+        'blue':#40ABF8,
+        'purple':#C970E1,
+        'orange':#F89500,
+        'brow':#9F835D,
+        'pink':#F62369,
+);
+
+.readner .list{
+  width: 300px;
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left:0;
+  margin: auto;
+  background: #383836;
+  overflow: auto;
+  .header{
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid #1a1a1a;
+    box-sizing: border-box;
+    .f1{
+      line-height: 45px;
+      font-size: 22px;
+      color: #fff;
+      font-weight: bold;
+      padding-left: 10px;
+      font-weight: normal;
+    }
+    .f2{
+      font-size: 22px;
+      color: #999;
+      &:hover{
+        color: #ccc;
+      }
+    }
+    .plus{
+      @include cube(45px);
+      position: absolute;
+      top:0;
+      right: 0;
+      cursor: pointer;
+      span{
+        @include center;
+        display: block;
+        @include cube(23px);
+        background-image: url('../img/packed-5.png');
+        background-repeat: no-repeat;
+        background-position: -23px -526px;
+      }
+    }
+  }
+
+  .plan{
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid #2a2a28;
+    box-sizing: border-box;
+    line-height: 45px;
+    .clock{
+      @include cube(40px);
+      margin-left: 10px;
+      background: url('../img/packed-5.png') 0 -359px no-repeat;
+    }
+    span{
+      position: absolute;
+      left: 60px;
+      top:0;
+      font-size: 16px;
+      color: #B7B7B7;
+    }
+  }
+
+  .lists-left li{
+    width: 100%;
+    height: 44px; border-bottom: 1px solid #2a2a28;
+    .licon{
+      @include circle(17px);
+      @include v-align;
+      margin-left: 23px;
+    }
+    .licon.green{
+      background: url('../img/packed-5.png') -85px   -571px;
+    }
+    .licon.yellow{
+      background: url('../img/packed-5.png') -34px -571px;
+    }
+    .licon.blue{
+      background: url('../img/packed-5.png') -68px -571px;
+    }
+    .licon.orange{
+      background: url('../img/packed-5.png') -51px -571px;
+    }
+    .licon.purple{
+      background: url('../img/packed-5.png') -17px -571px;
+    }
+    .licon.brow{
+      background: url('../img/packed-5.png') -133px -549px;
+    }
+    .licon.pink{
+      background: url('../img/packed-5.png') -102px -571px;
+    }
+    input{
+      position: absolute;left: 60px;
+      background: transparent;
+      outline: none;border: none;
+      display: none;
+      line-height: 44px;
+      box-sizing: border-box;
+      color: #B7B7B7;
+      font-size: 16px;
+      padding-left: 20px;
+    }
+    .ng-binding{color: #B7B7B7;display: block;position: absolute;left: 80px;top:11px;}
+  }
+  .lists-left li .yincang{  background: transparent;}
+  .lists-left li.xuangzhong{
+    background: rgba(13, 14, 10, 0.96);
+
+  }
+  .lists-left li .bianji{
+    display: block;
+  }
+}
+
+.readner .container{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 300px;
+  right: 0;
+  background: url("../img/3.png");
+  .search{
+    width: 100%;
+    height:45px;
+    border-bottom: 1px solid #cdcdcd;
+    box-sizing: border-box;
+    .sicon{
+      @include cube(45px);
+      span{
+        display: block;
+        @include center;
+        @include cube(23px);
+        background: url('../img/packed-5.png') -138px -359px;
+      }
+    }
+    input{
+      outline-style: none;
+      border: none;
+      background: transparent;
+      position: absolute;
+      top:0;
+      right: 0;
+      left: 45px;
+      margin: auto;
+      font-size: 16px;
+      padding-left: 10px;
+      box-sizing: border-box;
+      line-height: 45px;
+      font-weight: 100;
+    }
+  }
+
+  .container-inner{
+    width: 100%;
+    position: fixed;
+    top:75px;
+    left: 300px;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    .top{
+      height: 48px;
+      width: 100%;
+      color: red;
+      padding: 0 20px;
+      box-sizing: border-box;
+      position: relative;
+      line-height: 48px;
+      h1{
+        display: block;
+        width: 100%;
+        font-size: 40px;
+        font-weight: 300;
+        border-bottom: 1px solid #E0E0E0;
+        padding-left:20px;
+        padding-bottom:10px;
+        box-sizing: border-box;
+      }
+      .xuan{
+        position: absolute;
+        right:280px;
+        top:0px;
+        width: 100px;
+        height:48px;
+      }
+
+    }
+    .yiwancheng{
+      width: 100%;
+      /*  padding-left: 20px;*/
+      box-sizing: border-box;
+      margin-top: 10px;
+
+      .wanbox{
+        width: 100%;
+        height:100%;
+        border-bottom: 1px solid #E0E0E0;
+        line-height: 52px;
+        .wanicon{
+          display: block;
+          margin-left: 20px;
+          @include v-align;
+          left: 10px;
+          @include cube(23px);
+          background: url('../img/packed-5.png') -92px -526px;
+        }
+        .wanicon.active{
+          background: url('../img/packed-5.png') -69px -526px;
+        }
+        span{
+          margin-left: 40px;
+          color: #ccc;
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+      .zhe{
+        width: 100%;
+        height: 52px;
+        position: absolute;
+        .xiangq{
+          @include v-align;
+          right:350px ;
+          line-height: 52px;
+          z-index: 2222;
+
+        }
+      }
+      li{
+        width: 100%;
+        height: 52px;
+        border-bottom: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        color: #888;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 52px;
+        display: none;
+        position: relative;
+        z-index: 10;
+        .wanicon{
+          width: 26px;
+          height: 26px;
+          position: absolute;
+          top:0;bottom: 0;left: 0;
+          margin: auto;
+          border-radius: 50%;
+          margin-left: 30px;
+          span{
+            @include circle(20px);
+            @include center;
+
+          }
+        }
+        input{
+          width:80%;
+          height: 100%;
+          border: none;
+          outline: none;
+          background:transparent;
+          margin-left:50px;
+          font-size: 18px;
+          padding: 1px 20px;
+          box-sizing: border-box;
+          color: #000;
+
+        }
+        .del{
+          width: 100px;
+          height: 52px;
+          position: absolute;
+          top:0;
+          right: 320px;
+          z-index: 3333;
+
+        }
+
+      }
+      li.chuxian{
+        display: block;
+      }
+      li.active {
+        border-bottom: 0;
+        box-sizing: border-box;
+        background: rgba(137, 255, 100,0.5);
+
+      }
+    }
+
+    .tiaomu{
+      width: 100%;
+
+      box-sizing: border-box;
+      .tmlist{
+        width: 100%;
+        height: 52px;
+        border-bottom: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        color: #888;
+        padding-left: 50px;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 52px;
+      }
+      .tmitem{
+        width: 100%;
+        height: 52px;
+        border-bottom: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        color: #888;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 52px;
+        position: relative;
+        z-index: 10;
+        .zhe1{
+          width: 100%;
+          height: 52px;
+          position: absolute;
+          .xiangq{
+            @include v-align;
+            right:350px ;
+            line-height: 52px;
+            z-index: 2222;
+          }
+        }
+        .del{
+          width: 100px;
+          height: 52px;
+          position: absolute;
+          top:0;
+          right: 320px;
+          z-index: 33333;
+        }
+        .wanicon{
+          width: 26px;
+          height: 26px;
+          position: absolute;
+          top:0;bottom: 0;left: 0;
+          margin: auto;
+          border-radius: 50%;
+          margin-left: 30px;
+        }
+        input{
+          width: 100%;
+          height: 100%;
+          border: none;
+          outline: none;
+          background:transparent;
+          margin-left:50px;
+          font-size: 18px;
+          padding: 1px 20px;
+          box-sizing: border-box;
+          color: #000;
+        }
+
+      }
+    }
+    .itembox{
+      width: 355px;
+      height: 226px;
+      background: #fff;
+      box-sizing: border-box;
+      border-radius: 10px;
+      position: absolute;
+      right:400px;padding:4px;
+      z-index: 222;
+      box-shadow: 0 0 3px 1px #ccc;
+      .box{
+        width: 346px;
+        height: 216px;
+        border:1px solid #ccc;
+        border-radius: 10px;
+
+        input{
+          outline-style: none;
+          border:1px solid #ccc;
+          width: 314px;
+          height:42px;
+          @include c-align;
+          top:20px;
+          color: red;
+          font-size: 20px;
+          padding-left: 5px;
+          box-sizing: border-box;
+        }
+        span{
+          position: absolute;
+          top:80px;
+          left: 20px;
+        }
+
+        .colorlist{
+          width: 325px;
+          height:48px ;
+          margin-left: 20px;
+          margin-top:120px ;
+          border-bottom: 1px solid #ccc;
+          li{
+            @include circle(34px);
+            float: left;
+            margin-right: 10px;
+            padding: 5px;
+            box-sizing: border-box;
+            .coicon{
+              @include circle(24px);
+              @include center;
+            }
+          }
+          @each $i in map-keys($colorlist){
+            li.#{$i}{
+              .coicon{
+                background: map-get($colorlist,$i);
+              }
+            }
+            li.#{$i}.active{
+              border:2px solid map-get($colorlist,$i);
+            }
+          }
+
+
+        }
+
+      }
+    }
+    .botbox{
+      width: 100%;
+      height: 45px;
+      line-height: 45px;
+     .cancle{color: red;margin-left:25px;}
+     .quxiao{margin-left: 180px;}
+     .wan{margin-left: 10px;}
+
+    }
+  }
+  @each $i in map-keys($colorlist){
+    .container-inner.#{$i}{
+      .itembox .box input{
+        color: map-get($colorlist,$i);
+      }
+      .top{
+        color: map-get($colorlist,$i) ;
+      }
+      .yiwancheng{
+        li{
+          .wanicon{
+            border:2px solid  map_get($colorlist,$i);
+           span{
+              background: map_get($colorlist,$i);
+            }
+          }
+          .zhe{
+            background: rgba(217, 244, 7, 0.27);
+            border-top:1px solid map_get($colorlist,$i);
+            border-bottom:1px solid map_get($colorlist,$i)
+          }
+        }
+
+      }
+      .tiaomu{
+        li{
+          .wanicon{
+            border:2px solid  map_get($colorlist,$i);
+          }
+          .zhe1{
+            position: absolute;top:-2px;
+            background: rgba(182, 204, 5, 0.29);
+            border-top:1px solid map_get($colorlist,$i);
+            border-bottom:1px solid map_get($colorlist,$i)
+          }
+        }
+      }
+
+
+    }
+  }
+}
+
+
+
+

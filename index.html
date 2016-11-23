@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" ng-app="reminder">
+<head>
+	<meta charset="UTF-8">
+	<title>document</title>
+	<script src="js/jquery.js"></script>
+	<script src="js/angular.js"></script>
+	<script src="js/index.js"></script>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body ng-controller="main">
+	<div class="readner">
+		<div class="list">
+            <div class="header">
+                <span class="f1">iCloud</span>
+                <span class="f2">提醒事项</span>
+                <div class="plus" ng-click="add()">
+                    <span></span>
+                </div>
+            </div>
+            <div class="plan">
+                <div class="clock"></div>
+                <span>已计划</span>
+            </div>
+
+            <div ng-color-ul>
+                  <li ng-repeat="v in cates" data-id="{{v.id}}"
+                      ng-click="setcurrent(v)"
+                      class="licon {{v.theme}}">
+
+                      <div class="licon {{v.theme}}"></div>
+                      <span>{{v.title}}</span>
+                     <input type="text"  ng-model="v.title">
+
+                 </li>
+             </div>
+        </div>
+
+        <div class="container" ng-init="yincang=false">
+            <div class="search">
+                <div class="sicon">
+                    <span></span>
+                </div>
+                <input type="text"  placeholder="搜索所有提醒" >
+            </div>
+            <div class="container-inner" ng-class="current.theme" >
+
+                <div class="itembox" ng-show="yincang">
+                <my-op>
+
+                    <div class="box {{current.theme}}" >
+                        <input type="text" ng-model="current.title">
+                        <span>列表颜色</span>
+                        <ul class="colorlist" >
+                            <li ng-repeat="v in colors"
+                                class="{{v}}"
+                              ng-class="{active:v===current.theme}"
+                                ng-click="current.theme=v">
+                                <div class="coicon"></div>
+                            </li>
+
+                        </ul>
+                        <div class="botbox">
+                            <botton class="cancle"  ng-click="dele(current.id)">删除</botton>
+                            <botton class="quxiao"  ng-click="yincang=false;">取消</botton>
+                            <botton class="wan" ng-click="yincang=false;">完成</botton>
+
+                        </div>
+                    </div>
+
+
+
+                </my-op>
+            </div>
+                <div class="top" ng-class="current.theme">
+                    <h1>{{current.title}}</h1>
+                    <div class="xuan" ng-click="yincang=!yincang;" >选项</div>
+                </div>
+                <ul class="yiwancheng">
+                    <div class="wanbox">
+                        <span class="wanicon" ng-click="zhuan()"></span>
+                        <span>已完成:{{wancheng()}}项</span>
+                    </div>
+
+                    <li ng-repeat="v in current.todo|filter:{state:1}"
+                        ng-class="{'active':v==current}"  ng-click="zhezhao=true">
+                        <div class="zhe" ng-class="currnet.theme" ng-show="zhezhao" >
+                            <div class="xiangq">删除</div>
+                        </div>
+                        <div class="wanicon" ng-click="v.state=0" >
+                            <span></span>
+
+                        </div>
+                        <input type="text" ng-model="item" ng-keyup="addtodo($event)" zhezhao="false">
+
+                        <div class="del" ng-click="delete(v.id) pao($event)" ></div>
+
+                    </li>
+                </ul>
+                <hr>
+                <ul class="tiaomu">
+                    <li class="tmitem" ng-repeat="v in current.todo|filter:{state:0}" ng-init="zhehzao=false" ng-click="zhezhao=true">
+                        <div class="zhe1"  ng-class="current.theme" ng-show="zhezhao" >
+                        <div class="xiangq">删除</div>
+                        </div>
+                        <div class="wanicon" ng-click="v.state=1"></div>
+                        <input type="text"  ng-model="item" ng-keyup="addtodo($event)" zhezhao="false">
+                       <div class="del" ng-click="delete(v.id)"></div>
+                    </li>
+                    <li class="tmlist" ng-click="newadd($index)">新条目...</li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>
